@@ -23,8 +23,9 @@ work happens in a throwaway git worktree        (never your checkout)
 > resistance — not to contain an adversary.** It protects you from accidents
 > and agent misbehavior: the wrong-directory edit, the overeager
 > `git push`, the "helpful" hard reset. If you're running code or agents you
-> actively distrust, you want container/VM isolation (see
-> [Sandkeep](#relationship-to-sandkeep), Cordon's Docker-engined sibling).
+> actively distrust, you want container/VM isolation — see
+> [Sandkeep](https://github.com/ggoosen/Sandkeep), Cordon's Docker-engined
+> sibling ([more below](#relationship-to-sandkeep)).
 > The full list of limits is in [Honest limitations](#honest-limitations).
 
 ## Quick start
@@ -168,14 +169,15 @@ and proves benign work passes.
 
 ## Relationship to Sandkeep
 
-Cordon and Sandkeep are one mental model — *isolate → review → gate*,
-`accept`/`discard`, a JSON-lines audit trail — with two engines:
+Cordon and [**Sandkeep**](https://github.com/ggoosen/Sandkeep) are one
+mental model — *isolate → review → gate*, `accept`/`discard`, a JSON-lines
+audit trail — with two engines:
 
 - **Cordon** (this repo): zero infra, pure Claude Code config. For *"I trust
   the agent; I want disciplined, reversible, reviewable work."*
-- **Sandkeep**: an external controller driving Docker/microVM isolation,
-  host repo mounted read-only, only a patch comes back. For *"I don't trust
-  this agent or this code."*
+- **[Sandkeep](https://github.com/ggoosen/Sandkeep)**: an external
+  controller driving Docker/microVM isolation, host repo mounted read-only,
+  only a patch comes back. For *"I don't trust this agent or this code."*
 
 Start here; when the trust assumption breaks, move there. Two doors, one
 house.
