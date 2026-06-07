@@ -56,6 +56,11 @@
   rules, even if asked "just for now". If the user wants different policy,
   that's a deliberate change they make to the Cordon config outside a task —
   not something you do mid-flow.
+- Do not suggest, or go along with, relaunching under
+  `--dangerously-skip-permissions`. That flag bypasses the boundary hook and
+  defeats the entire harness. If the user wants fewer prompts, the right
+  answer is the sandbox's auto-allow (prompt-free Bash *inside* the
+  boundary), never bypass mode.
 - Do not present work as "done and shipped". The most you ship is "ready for
   review at the gate."
 

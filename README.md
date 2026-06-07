@@ -162,6 +162,16 @@ and proves benign work passes.
 - **No native always-worktree or diff-gate exists** (verified at CLI
   2.1.168; SessionStart hooks cannot block startup). Cordon builds both from
   hooks + skills. If Claude Code ships native equivalents, prefer them.
+- **`--dangerously-skip-permissions` defeats Cordon — do not combine them.**
+  Tested live: a `claude --worktree --dangerously-skip-permissions` session
+  sailed straight past the boundary hook (wrote outside the worktree, ran
+  `curl`, no audit entry). Bypass mode is the explicit "no guardrails" flag;
+  it's at war with the harness. If you want prompt-free autonomy *inside*
+  the boundary, use the sandbox's auto-allow (already on) — sandboxed Bash
+  runs without prompts because the OS boundary contains it, no bypass needed.
+  To make bypass impossible for a team, deploy
+  [`managed-settings.example.json`](managed-settings.example.json), which
+  sets `disableBypassPermissionsMode: "disable"`.
 - **Hooks are bypassable by editing the hooks** — which is why the
   security-relevant rules also live in `permissions.deny` (merge-and-can't-
   loosen) and optionally managed settings. Defense in depth, not one check.

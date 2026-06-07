@@ -88,10 +88,10 @@ done
   warn "statusline script missing"
 
 missing_skills=""
-for sk in cordon-review cordon-accept cordon-discard cordon-status; do
+for sk in cordon-review cordon-accept cordon-discard cordon-status cordon-update; do
   [ -f "$ROOT/.claude/skills/$sk/SKILL.md" ] || missing_skills="$missing_skills $sk"
 done
-[ -z "$missing_skills" ] && ok "all four gate skills present (/cordon-review /cordon-accept /cordon-discard /cordon-status)" ||
+[ -z "$missing_skills" ] && ok "all five skills present (/cordon-review /cordon-accept /cordon-discard /cordon-status /cordon-update)" ||
   bad "missing skills:$missing_skills" "re-run install.sh"
 
 if [ -f "$ROOT/.claude/cordon.config" ]; then
@@ -100,6 +100,9 @@ if [ -f "$ROOT/.claude/cordon.config" ]; then
     strict | guided) ok "policy: $pol (.claude/cordon.config)" ;;
     *) bad "invalid CORDON_POLICY '$pol'" "set CORDON_POLICY=strict or guided in .claude/cordon.config" ;;
   esac
+  ver="$(sed -n 's/^CORDON_VERSION=//p' "$ROOT/.claude/cordon.config" | head -1 | tr -d '[:space:]')"
+  [ -n "$ver" ] && info "installed Cordon version: $ver (update with /cordon-update)" ||
+    info "no version stamp (pre-0.2.0 install) — /cordon-update recommended"
 else
   warn "no .claude/cordon.config — hooks default to strict"
 fi
@@ -172,6 +175,7 @@ esac
   info "audit trail: $(wc -l <"$ROOT/.claude/cordon-audit.jsonl" | tr -d ' ') entries (.claude/cordon-audit.jsonl)" ||
   info "audit trail: none yet (created on first tool use)"
 info "live sandbox state can only be seen in-session: run /sandbox"
+info "NEVER launch with --dangerously-skip-permissions — it bypasses the boundary hook. For prompt-free work, rely on the sandbox's auto-allow instead."
 
 echo
 echo "doctor: $PASS ok, $FAIL failed, $WARN warnings"

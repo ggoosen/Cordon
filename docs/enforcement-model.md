@@ -107,3 +107,4 @@ shared across worktrees, so it's instantly visible in the main checkout) and
 | Creative shell evasion of string matching | OS sandbox (the layer that doesn't parse, it contains) |
 | Sandbox unavailable on the OS | statusline shows it; `failIfUnavailable` in managed tier makes it fatal |
 | Determined human editing project config | managed settings only — and that's explicitly out of scope otherwise |
+| `--dangerously-skip-permissions` launch | **nothing at project scope** — verified live that bypass mode skips the boundary hook. Only managed `disableBypassPermissionsMode: "disable"` closes it. Cordon assumes a cooperative operator who doesn't launch with the "no guardrails" flag. |

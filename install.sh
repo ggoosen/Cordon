@@ -103,9 +103,14 @@ cp "$T/cordon-doctor.sh" "$TARGET/.claude/cordon-doctor.sh"
 chmod +x "$TARGET/.claude/cordon-doctor.sh"
 note ".claude/cordon-doctor.sh (health check — run it anytime)"
 
-# policy config
-sed "s/^CORDON_POLICY=.*/CORDON_POLICY=$POLICY/" "$T/cordon.config" >"$TARGET/.claude/cordon.config"
-note ".claude/cordon.config (CORDON_POLICY=$POLICY)"
+# policy config + version stamp
+VERSION="$(sed -n 's/.*"version": "\([^"]*\)".*/\1/p' "$SRC/.claude-plugin/plugin.json" 2>/dev/null | head -1)"
+[ -n "$VERSION" ] || VERSION="unknown"
+{
+  sed "s/^CORDON_POLICY=.*/CORDON_POLICY=$POLICY/" "$T/cordon.config"
+  echo "CORDON_VERSION=$VERSION"
+} >"$TARGET/.claude/cordon.config"
+note ".claude/cordon.config (CORDON_POLICY=$POLICY, CORDON_VERSION=$VERSION)"
 
 # CLAUDE.md governance stamp — replace our marked block if present, else append.
 GOV="$T/governance/CLAUDE.$POSTURE.md"
