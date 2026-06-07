@@ -50,6 +50,13 @@ Work normally. When the work is ready: `/cordon-review` → you decide:
 `/cordon-accept` (lands a `cordon-accepted/*` branch for you to merge or
 push) or `/cordon-discard` (deletes the worktree, your checkout untouched).
 
+**Is it actually on?** Run the doctor — it checks every file, every wiring
+point, and live-fires the hooks with real payloads:
+
+```bash
+.claude/cordon-doctor.sh
+```
+
 Requirements: git, **jq** (the hooks fail closed without it), Claude Code
 ≥ 2.1.x. Sandbox: macOS (built-in Seatbelt) or Linux/WSL2
 (`apt install bubblewrap socat`).

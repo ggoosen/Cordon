@@ -12,19 +12,25 @@ the harness.
 
 ## Current state
 
+(These injected commands must stay simple — no pipes, `$()`, or `||`, which
+the permission layer refuses to analyze. Compute anything fancier yourself
+in the steps below.)
+
 - Branch: !`git branch --show-current`
-- Status: !`git status --short || true`
-- Base: !`git merge-base HEAD origin/HEAD 2>/dev/null || git merge-base HEAD main 2>/dev/null || git merge-base HEAD master 2>/dev/null || echo "(no base found — diff against first commit)"`
-- Changed files: !`base=$(git merge-base HEAD origin/HEAD 2>/dev/null || git merge-base HEAD main 2>/dev/null || git merge-base HEAD master 2>/dev/null); [ -n "$base" ] && git diff --stat "$base"..HEAD || echo "(none)"`
-- Commits in this session: !`base=$(git merge-base HEAD origin/HEAD 2>/dev/null || git merge-base HEAD main 2>/dev/null || git merge-base HEAD master 2>/dev/null); [ -n "$base" ] && git log --oneline "$base"..HEAD || git log --oneline -10`
+- Status: !`git status --short`
+- Recent commits: !`git log --oneline -15`
 
 ## Do this
 
 1. **Sanity-check isolation.** If this session is not in a worktree (branch
    does not start with `worktree-` and cwd is not under `.claude/worktrees/`),
    say so plainly and stop — there is nothing to gate.
-2. **Show the full diff against the base**, walked through file by file,
-   grouped sensibly. Don't paraphrase away detail the human needs to judge.
+2. **Find the base and show the full diff.** Compute the base yourself:
+   try `git merge-base HEAD origin/HEAD`; if that fails, try `main`, then
+   `master`; if none exist, diff against the first commit. Then walk the
+   human through `git diff <base>..HEAD` file by file, grouped sensibly,
+   and list the session's commits (`git log --oneline <base>..HEAD`).
+   Don't paraphrase away detail the human needs to judge.
 3. **Run the project's checks** if a test command exists (look for
    `npm test`, `pytest`, `make test`, or the project's documented command).
    Report pass/fail with the relevant output.

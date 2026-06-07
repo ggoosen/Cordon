@@ -98,6 +98,29 @@ check "installer: re-run switches posture without duplicating" "[ \"\$(grep -c '
 check "installer: re-run switches policy" "grep -qx 'CORDON_POLICY=guided' '$TGT/.claude/cordon.config'"
 check "installer: .gitignore not duplicated" "[ \"\$(grep -cx '.claude/worktrees/' '$TGT/.gitignore')\" = '1' ]"
 
+echo "— skill injections must be statically analyzable —"
+# The permission layer rejects injected !`…` commands containing shell syntax
+# ($(), ||, &&, ;, |, redirects). Regression for a real-world failure.
+badlines="$(grep -hoE '!`[^`]*`' "$ROOT"/template/skills/*/SKILL.md | grep -E '\$\(|\|\||&&|;|\||>' || true)"
+if [ -z "$badlines" ]; then
+  ok "no compound shell in skill context injections"
+else
+  fail "skill injections contain unanalyzable shell: $badlines"
+fi
+
+echo "— cordon-doctor —"
+check "installer: doctor placed + executable" "[ -x '$TGT/.claude/cordon-doctor.sh' ]"
+git -C "$TGT" add -A >/dev/null 2>&1 && git -C "$TGT" -c user.email=t@t -c user.name=t commit -qm "rails" >/dev/null 2>&1
+( cd "$TGT" && bash .claude/cordon-doctor.sh >/dev/null 2>&1 )
+check "doctor passes on a healthy install" "( cd '$TGT' && bash .claude/cordon-doctor.sh >/dev/null 2>&1 )"
+chmod -x "$TGT/.claude/hooks/boundary.sh"
+if ( cd "$TGT" && bash .claude/cordon-doctor.sh >/dev/null 2>&1 ); then
+  fail "doctor should fail when boundary.sh is not executable"
+else
+  ok "doctor fails when boundary.sh is broken"
+fi
+chmod +x "$TGT/.claude/hooks/boundary.sh"
+
 echo "— template ↔ plugin drift —"
 drift=0
 for d in "$ROOT"/template/skills/*/; do

@@ -10,12 +10,24 @@ Give the human a compact, honest picture of the session.
 
 ## Current state
 
-- Worktree/branch: !`git branch --show-current; git rev-parse --show-toplevel`
-- Linked worktrees: !`git worktree list 2>/dev/null || true`
-- Changes: !`git status --short | head -40`
-- Diffstat vs base: !`base=$(git merge-base HEAD origin/HEAD 2>/dev/null || git merge-base HEAD main 2>/dev/null || git merge-base HEAD master 2>/dev/null); [ -n "$base" ] && git diff --stat "$base"..HEAD | tail -5 || echo "(no base)"`
-- Policy: !`sed -n 's/^CORDON_POLICY=//p' "$(git rev-parse --git-common-dir 2>/dev/null | sed 's#/\.git$##')/.claude/cordon.config" 2>/dev/null || sed -n 's/^CORDON_POLICY=//p' .claude/cordon.config 2>/dev/null || echo "strict (default)"`
-- Recent audit entries: !`log="$(git rev-parse --git-common-dir 2>/dev/null | sed 's#/\.git$##')/.claude/cordon-audit.jsonl"; [ -f "$log" ] && { wc -l < "$log" | tr -d ' '; echo "total —"; tail -5 "$log"; } || echo "(no audit log yet)"`
+(These injected commands must stay simple — no pipes, `$()`, or `||`, which
+the permission layer refuses to analyze. Gather anything fancier yourself
+in the steps below.)
+
+- Branch: !`git branch --show-current`
+- Checkout root: !`git rev-parse --show-toplevel`
+- Linked worktrees: !`git worktree list`
+- Changes: !`git status --short`
+- Recent commits: !`git log --oneline -10`
+
+Gather the rest yourself before reporting:
+- **Diffstat vs base**: compute the base (`git merge-base HEAD origin/HEAD`,
+  falling back to `main`, then `master`), then `git diff --stat <base>..HEAD`.
+- **Policy**: Read `.claude/cordon.config` (in the MAIN checkout — find it
+  via `git rev-parse --git-common-dir`, stripping the trailing `/.git`).
+- **Blocked attempts**: `tail -10` the main checkout's
+  `.claude/cordon-audit.jsonl` if it exists; entries with
+  `"event":"PreToolUse-denied"` are blocks.
 
 ## Report
 

@@ -89,6 +89,10 @@ cp "$T/statusline/statusline.sh" "$TARGET/.claude/statusline/statusline.sh"
 chmod +x "$TARGET/.claude/statusline/statusline.sh"
 note ".claude/statusline/statusline.sh"
 
+cp "$T/cordon-doctor.sh" "$TARGET/.claude/cordon-doctor.sh"
+chmod +x "$TARGET/.claude/cordon-doctor.sh"
+note ".claude/cordon-doctor.sh (health check — run it anytime)"
+
 # policy config
 sed "s/^CORDON_POLICY=.*/CORDON_POLICY=$POLICY/" "$T/cordon.config" >"$TARGET/.claude/cordon.config"
 note ".claude/cordon.config (CORDON_POLICY=$POLICY)"
@@ -126,9 +130,10 @@ cat <<EOF
 Done. Next steps:
   1. Review and commit the new files (CLAUDE.md, .claude/, .gitignore) so the
      whole team gets the same rails — they travel into every worktree.
-  2. Run 'claude' once in $TARGET to accept workspace trust, then start
+  2. Verify everything is in place and live:  .claude/cordon-doctor.sh
+  3. Run 'claude' once in $TARGET to accept workspace trust, then start
      isolated sessions with:  claude --worktree
-  3. The flow: work → /cordon-review → /cordon-accept or /cordon-discard.
+  4. The flow: work → /cordon-review → /cordon-accept or /cordon-discard.
 
 Honesty note: Cordon contains accidents and misbehavior, not a determined
 adversary. Read the README's security callout before trusting it further.
