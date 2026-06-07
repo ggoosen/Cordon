@@ -97,6 +97,10 @@ bash "$ROOT/install.sh" "$TGT" --posture guide --policy guided >/dev/null
 check "installer: re-run switches posture without duplicating" "[ \"\$(grep -c 'BEGIN CORDON GOVERNANCE' '$TGT/CLAUDE.md')\" = '1' ] && grep -q 'posture: guide' '$TGT/CLAUDE.md'"
 check "installer: re-run switches policy" "grep -qx 'CORDON_POLICY=guided' '$TGT/.claude/cordon.config'"
 check "installer: .gitignore not duplicated" "[ \"\$(grep -cx '.claude/worktrees/' '$TGT/.gitignore')\" = '1' ]"
+# bare re-run (update) must PRESERVE previously chosen posture/policy
+bash "$ROOT/install.sh" "$TGT" >/dev/null
+check "installer: bare re-run preserves posture (guide)" "grep -q 'posture: guide' '$TGT/CLAUDE.md'"
+check "installer: bare re-run preserves policy (guided)" "grep -qx 'CORDON_POLICY=guided' '$TGT/.claude/cordon.config'"
 
 echo "— skill injections must be statically analyzable —"
 # The permission layer rejects injected !`…` commands containing shell syntax

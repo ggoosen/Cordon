@@ -16,8 +16,8 @@ err() { printf 'cordon install: %s\n' "$*" >&2; exit 1; }
 note() { printf '  %s\n' "$*"; }
 
 TARGET="$PWD"
-POSTURE="enforce"
-POLICY="strict"
+POSTURE=""
+POLICY=""
 
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -32,15 +32,25 @@ while [ $# -gt 0 ]; do
   esac
 done
 
-case "$POSTURE" in enforce | guide) : ;; *) err "--posture must be enforce or guide" ;; esac
-case "$POLICY" in strict | guided) : ;; *) err "--policy must be strict or guided" ;; esac
-
 command -v jq >/dev/null 2>&1 || echo "cordon install: WARNING — jq is required by the hooks at runtime and was not found on PATH. Install it (brew install jq / apt install jq); without it every guarded tool call fails closed." >&2
 git -C "$TARGET" rev-parse --show-toplevel >/dev/null 2>&1 || err "$TARGET is not a git repository (Cordon's isolation is built on git worktrees).
   Initialize one first:  git init -b main && git add -A && git commit -m init"
 TARGET="$(git -C "$TARGET" rev-parse --show-toplevel)"
 git -C "$TARGET" rev-parse HEAD >/dev/null 2>&1 || err "$TARGET has no commits yet — worktrees need at least one.
   Make an initial commit:  git add -A && git commit -m init  (or: git commit --allow-empty -m init)"
+
+# On re-runs (updates), preserve the previously chosen posture/policy unless
+# a flag explicitly overrides it. Fresh installs default to enforce/strict.
+if [ -z "$POSTURE" ]; then
+  existing="$(sed -n 's/.*BEGIN CORDON GOVERNANCE (posture: \([a-z]*\)).*/\1/p' "$TARGET/CLAUDE.md" 2>/dev/null | head -1)"
+  case "$existing" in enforce | guide) POSTURE="$existing" ;; *) POSTURE="enforce" ;; esac
+fi
+if [ -z "$POLICY" ]; then
+  existing="$(sed -n 's/^CORDON_POLICY=//p' "$TARGET/.claude/cordon.config" 2>/dev/null | head -1 | tr -d '[:space:]')"
+  case "$existing" in strict | guided) POLICY="$existing" ;; *) POLICY="strict" ;; esac
+fi
+case "$POSTURE" in enforce | guide) : ;; *) err "--posture must be enforce or guide" ;; esac
+case "$POLICY" in strict | guided) : ;; *) err "--policy must be strict or guided" ;; esac
 
 # Locate the template: next to this script, or bootstrap a clone (curl|bash).
 SRC="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" 2>/dev/null && pwd -P || true)"
