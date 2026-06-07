@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+
+  "permissions": {
+    "defaultMode": "default",
+    "deny": [
+      "Bash(git push)",
+      "Bash(git push *)",
+      "Bash(git reset --hard)",
+      "Bash(git reset --hard *)",
+      "Bash(git checkout main)",
+      "Bash(git checkout main *)",
+      "Bash(git checkout master)",
+      "Bash(git checkout master *)",
+      "Bash(git switch main)",
+      "Bash(git switch master)",
+      "Bash(rm -rf *)",
+      "Bash(rm -fr *)",
+      "Bash(sudo *)",
+      "Bash(curl *)",
+      "Bash(wget *)",
+      "Bash(nc *)",
+      "Edit(.git/**)",
+      "Write(.git/**)",
+      "Edit(.claude/**)",
+      "Write(.claude/**)",
+      "Read(.env)",
+      "Read(.env.*)",
+      "Read(**/*.pem)",
+      "Read(**/id_rsa*)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)"
+    ],
+    "ask": [
+      "Bash(git commit *)"
+    ]
+  },
+
+  "sandbox": {
+    "enabled": true,
+    "filesystem": {
+      "denyRead": ["~/.ssh", "~/.aws"]
+    },
+    "network": {
+      "allowedDomains": []
+    }
+  },
+
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          { "type": "command", "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/enforce-isolation.sh" }
+        ]
+      },
+      {
+        "matcher": "resume",
+        "hooks": [
+          { "type": "command", "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/enforce-isolation.sh" }
+        ]
+      },
+      {
+        "matcher": "clear",
+        "hooks": [
+          { "type": "command", "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/enforce-isolation.sh" }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Edit|Write|NotebookEdit",
+        "hooks": [
+          { "type": "command", "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/boundary.sh" }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash|Edit|Write|NotebookEdit",
+        "hooks": [
+          { "type": "command", "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/audit.sh" }
+        ]
+      }
+    ]
+  },
+
+  "statusLine": {
+    "type": "command",
+    "command": "$CLAUDE_PROJECT_DIR/.claude/statusline/statusline.sh"
+  }
+}

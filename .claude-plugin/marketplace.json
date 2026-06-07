@@ -1,0 +1,11 @@
+{
+  "name": "cordon",
+  "owner": { "name": "George Goosen", "url": "https://github.com/ggoosen" },
+  "plugins": [
+    {
+      "name": "cordon",
+      "source": "./",
+      "description": "Isolated, sandboxed, diff-gated Claude Code sessions: worktree isolation, boundary hooks, and a human review gate. NOTE: the plugin ships skills + hooks only — run install.sh for the complete framework (settings, sandbox, governance CLAUDE.md)."
+    }
+  ]
+}

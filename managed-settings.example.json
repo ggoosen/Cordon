@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+
+  "_comment": "Cordon managed (admin) enforcement — the only truly unoverridable tier. Deploy to: macOS /Library/Application Support/ClaudeCode/managed-settings.json · Linux/WSL /etc/claude-code/managed-settings.json · Windows C:\\Program Files\\ClaudeCode\\managed-settings.json. Deny rules and sandbox booleans here cannot be loosened by project/user settings or CLI flags. Do NOT set allowManagedHooksOnly unless you also ship Cordon's hooks via a managed source — it would silently disable the project-level boundary hook.",
+
+  "permissions": {
+    "defaultMode": "default",
+    "disableBypassPermissionsMode": "disable",
+    "deny": [
+      "Bash(git push)",
+      "Bash(git push *)",
+      "Bash(git reset --hard)",
+      "Bash(git reset --hard *)",
+      "Bash(rm -rf *)",
+      "Bash(rm -fr *)",
+      "Bash(sudo *)",
+      "Bash(curl *)",
+      "Bash(wget *)",
+      "Bash(nc *)",
+      "Edit(.git/**)",
+      "Write(.git/**)",
+      "Edit(.claude/**)",
+      "Write(.claude/**)",
+      "Read(.env)",
+      "Read(.env.*)",
+      "Read(**/*.pem)",
+      "Read(**/id_rsa*)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)"
+    ]
+  },
+
+  "sandbox": {
+    "enabled": true,
+    "failIfUnavailable": true,
+    "allowUnsandboxedCommands": false,
+    "filesystem": {
+      "denyRead": ["~/.ssh", "~/.aws"]
+    }
+  }
+}

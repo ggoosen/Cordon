@@ -1,0 +1,21 @@
+name: tests
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install jq (ubuntu has it; macos runners do too — verify)
+        run: command -v jq || (sudo apt-get update && sudo apt-get install -y jq)
+      - name: Check plugin copies are in sync with template/
+        run: |
+          ./scripts/sync-plugin.sh
+          git diff --exit-code -- skills hooks || {
+            echo "::error::plugin copies drifted from template/ — run scripts/sync-plugin.sh and commit"; exit 1; }
+      - name: Run test suite (governance LLM tests skipped in CI)
+        run: ./tests/run.sh

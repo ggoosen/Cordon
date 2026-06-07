@@ -1,0 +1,7 @@
+# Cordon repo housekeeping
+.DS_Store
+tests/fixtures/
+# this repo's own Claude Code session state (not part of the product)
+.claude/settings.local.json
+.claude/worktrees/
+.claude/cordon-audit.jsonl
