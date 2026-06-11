@@ -3,6 +3,6 @@
   "description": "Force every Claude Code session into an isolated, sandboxed, diff-gated workflow: worktree isolation, boundary hooks, and a human review gate.",
   "version": "0.2.0",
   "license": "Apache-2.0",
-  "author": { "name": "George Goosen" },
+  "author": { "name": "George Goosen", "url": "https://github.com/ggoosen" },
   "repository": "https://github.com/ggoosen/Cordon"
 }

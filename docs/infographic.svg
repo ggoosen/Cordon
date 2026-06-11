@@ -1,0 +1,249 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="1580" viewBox="0 0 1280 1580" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0e1217"/>
+      <stop offset="1" stop-color="#171c24"/>
+    </linearGradient>
+    <!-- line icons: stroke set on each <use> via inherited context -->
+    <g id="ico-term" fill="none" stroke="#c9d1da" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="-22" y="-16" width="44" height="32" rx="5"/>
+      <path d="M -12 -6 L -5 0 L -12 6"/>
+      <path d="M -2 7 H 9"/>
+    </g>
+    <g id="ico-branch" fill="none" stroke="#c9d1da" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M -11 -15 V 15"/>
+      <circle cx="-11" cy="-15" r="4"/>
+      <circle cx="-11" cy="15" r="4"/>
+      <path d="M -11 -2 H 7"/>
+      <circle cx="11" cy="-2" r="4"/>
+    </g>
+    <g id="ico-repo" fill="none" stroke="#c9d1da" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="-17" y="-17" width="34" height="34" rx="6"/>
+      <path d="M -9 -7 H 9"/>
+      <path d="M -9 1 H 9"/>
+      <path d="M -9 9 H 2"/>
+    </g>
+    <path id="ico-spark" d="M 0 -18 L 4 -4 L 18 0 L 4 4 L 0 18 L -4 4 L -18 0 L -4 -4 Z" fill="#d97757"/>
+    <g id="ico-shield" fill="rgba(217,119,87,0.12)" stroke="#d97757" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 0 -17 L 15 -11 V 2 C 15 13 7 17 0 19 C -7 17 -15 13 -15 2 V -11 Z"/>
+      <path d="M -6 0 L -1 6 L 8 -6" stroke="#e08a6b"/>
+    </g>
+    <g id="ico-doc" fill="none" stroke="#c9d1da" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M -12 -17 H 6 L 13 -10 V 17 H -12 Z"/>
+      <path d="M 6 -17 V -10 H 13"/>
+      <path d="M -6 -3 H 7"/>
+      <path d="M -6 4 H 7"/>
+      <path d="M -6 11 H 2"/>
+    </g>
+    <g id="ico-review" fill="none" stroke="#c9d1da" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="-14" y="-17" width="28" height="34" rx="4"/>
+      <path d="M -5 -17 V -21 H 5 V -17" stroke="#c9d1da"/>
+      <path d="M -8 -6 H 8"/>
+      <path d="M -8 0 H 8"/>
+      <path d="M -8 8 L -3 13 L 9 0" stroke="#6cc070"/>
+    </g>
+    <g id="ico-trash" fill="none" stroke="#c9d1da" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M -13 -9 H 13"/>
+      <path d="M -5 -9 V -13 H 5 V -9"/>
+      <path d="M -10 -9 L -8 15 H 8 L 10 -9"/>
+      <path d="M -3 -3 V 10"/>
+      <path d="M 3 -3 V 10"/>
+    </g>
+    <path id="ico-check" d="M -8 0 L -2 7 L 9 -8" fill="none" stroke="#6cc070" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="ico-cross" d="M -7 -7 L 7 7 M 7 -7 L -7 7" fill="none" stroke="#e5604d" stroke-width="3" stroke-linecap="round"/>
+  </defs>
+
+  <rect width="1280" height="1580" fill="url(#bg)"/>
+  <rect x="14" y="14" width="1252" height="1552" rx="20" fill="none" stroke="#262d38" stroke-width="1.5"/>
+  <!-- accent corner ticks -->
+  <path d="M 70 24 L 24 24 L 24 70" fill="none" stroke="#d97757" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 1210 24 L 1256 24 L 1256 70" fill="none" stroke="#d97757" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 70 1556 L 24 1556 L 24 1510" fill="none" stroke="#d97757" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 1210 1556 L 1256 1556 L 1256 1510" fill="none" stroke="#d97757" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- ===== HEADER ===== -->
+  <text x="70" y="74" font-size="22" font-weight="700" letter-spacing="3.5" fill="#d97757">CLAUDE CODE · GOVERNED SESSIONS</text>
+  <text x="66" y="138" font-size="62" font-weight="800" letter-spacing="-1.5" fill="#f3f5f8">Cordon</text>
+  <text x="70" y="178" font-size="25" font-weight="500" fill="#c9d1da">Every session takes one controlled path — five steps, every time.</text>
+  <text x="1210" y="138" text-anchor="end" font-size="20" font-weight="600" fill="#8b97a6">isolate · review · land or discard</text>
+
+  <!-- row dividers -->
+  <g stroke="#242b35" stroke-width="1.4">
+    <line x1="40" y1="200" x2="1240" y2="200"/>
+    <line x1="40" y1="454" x2="1240" y2="454"/>
+    <line x1="40" y1="708" x2="1240" y2="708"/>
+    <line x1="40" y1="962" x2="1240" y2="962"/>
+    <line x1="40" y1="1216" x2="1240" y2="1216"/>
+    <line x1="40" y1="1470" x2="1240" y2="1470"/>
+  </g>
+
+  <!-- ================= ROW 1 — throwaway worktree (rowMid 327, cy 309) ================= -->
+  <rect x="44" y="298" width="58" height="58" rx="16" fill="#d97757"/>
+  <text x="73" y="339" text-anchor="middle" font-size="34" font-weight="800" fill="#fff">1</text>
+  <text x="128" y="288" font-size="29" font-weight="800" fill="#f3f5f8">Throwaway worktree</text>
+  <line x1="128" y1="300" x2="372" y2="300" stroke="#d97757" stroke-width="3"/>
+  <text x="128" y="332" font-size="20.5" font-weight="500" fill="#9aa6b4">
+    <tspan x="128">Work runs in a disposable git</tspan>
+    <tspan x="128" dy="27">worktree, spun up by <tspan fill="#c9d1da" font-weight="600">claude</tspan></tspan>
+    <tspan x="128" dy="27"><tspan fill="#c9d1da" font-weight="600">--worktree</tspan> — never your real checkout.</tspan>
+  </text>
+  <!-- mini-flow -->
+  <g>
+    <!-- connectors -->
+    <line x1="695" y1="309" x2="838" y2="309" stroke="#d97757" stroke-width="2.6"/>
+    <path d="M 845 309 l -9 -5 l 0 10 z" fill="#d97757"/>
+    <text x="770" y="289" text-anchor="middle" font-size="16.5" fill="#8b97a6">spawns</text>
+    <line x1="955" y1="309" x2="1098" y2="309" stroke="#5b6675" stroke-width="2.4" stroke-dasharray="6 6"/>
+    <text x="1030" y="289" text-anchor="middle" font-size="16.5" fill="#8b97a6">isolated from</text>
+    <!-- nodes -->
+    <rect x="585" y="277" width="110" height="64" rx="12" fill="#161b22" stroke="#2b333d"/>
+    <use href="#ico-term" x="640" y="309"/>
+    <text x="640" y="375" text-anchor="middle" font-size="17" font-weight="600" fill="#c9d1da">claude</text>
+    <text x="640" y="396" text-anchor="middle" font-size="15" fill="#8b97a6">--worktree</text>
+    <rect x="845" y="277" width="110" height="64" rx="12" fill="#161b22" stroke="#d97757" stroke-dasharray="5 5"/>
+    <use href="#ico-branch" x="900" y="309"/>
+    <text x="900" y="375" text-anchor="middle" font-size="17" font-weight="600" fill="#c9d1da">throwaway</text>
+    <text x="900" y="396" text-anchor="middle" font-size="15" fill="#8b97a6">work happens here</text>
+    <rect x="1105" y="277" width="110" height="64" rx="12" fill="#161b22" stroke="#2b333d"/>
+    <use href="#ico-repo" x="1155" y="309"/>
+    <use href="#ico-check" x="1196" y="290"/>
+    <text x="1160" y="375" text-anchor="middle" font-size="17" font-weight="600" fill="#c9d1da">your checkout</text>
+    <text x="1160" y="396" text-anchor="middle" font-size="15" fill="#6cc070">untouched</text>
+  </g>
+
+  <!-- ================= ROW 2 — sandbox + boundary (rowMid 581, cy 563) ================= -->
+  <rect x="44" y="552" width="58" height="58" rx="16" fill="#d97757"/>
+  <text x="73" y="593" text-anchor="middle" font-size="34" font-weight="800" fill="#fff">2</text>
+  <text x="128" y="542" font-size="29" font-weight="800" fill="#f3f5f8">OS sandbox + boundary hook</text>
+  <line x1="128" y1="554" x2="468" y2="554" stroke="#d97757" stroke-width="3"/>
+  <text x="128" y="586" font-size="20.5" font-weight="500" fill="#9aa6b4">
+    <tspan x="128">An OS sandbox and a PreToolUse</tspan>
+    <tspan x="128" dy="27">boundary hook keep the agent</tspan>
+    <tspan x="128" dy="27">inside its workspace — nowhere else.</tspan>
+  </text>
+  <g>
+    <line x1="695" y1="563" x2="838" y2="563" stroke="#d97757" stroke-width="2.6"/>
+    <path d="M 845 563 l -9 -5 l 0 10 z" fill="#d97757"/>
+    <text x="770" y="543" text-anchor="middle" font-size="16.5" fill="#8b97a6">every action</text>
+    <!-- nodes -->
+    <rect x="585" y="531" width="110" height="64" rx="12" fill="#161b22" stroke="#2b333d"/>
+    <use href="#ico-spark" x="640" y="563"/>
+    <text x="640" y="629" text-anchor="middle" font-size="17" font-weight="600" fill="#c9d1da">agent</text>
+    <rect x="845" y="531" width="110" height="64" rx="12" fill="#161b22" stroke="#2b333d"/>
+    <use href="#ico-shield" x="900" y="561"/>
+    <text x="900" y="629" text-anchor="middle" font-size="17" font-weight="600" fill="#c9d1da">boundary</text>
+    <text x="900" y="650" text-anchor="middle" font-size="15" fill="#8b97a6">hook + sandbox</text>
+    <!-- fork: allow / deny pills -->
+    <line x1="955" y1="555" x2="1030" y2="539" stroke="#6cc070" stroke-width="2.4"/>
+    <path d="M 1036 538 l -10 -2 l 4 9 z" fill="#6cc070"/>
+    <line x1="955" y1="571" x2="1030" y2="587" stroke="#e5604d" stroke-width="2.4" stroke-dasharray="5 5"/>
+    <path d="M 1036 588 l -10 -7 l 0 9 z" fill="#e5604d"/>
+    <rect x="1036" y="521" width="194" height="34" rx="17" fill="rgba(108,192,112,0.10)" stroke="#6cc070"/>
+    <use href="#ico-check" x="1052" y="538"/>
+    <text x="1068" y="543" font-size="14.5" font-weight="600" fill="#c8e6c9">writes inside workspace</text>
+    <rect x="1036" y="571" width="194" height="34" rx="17" fill="rgba(229,96,77,0.10)" stroke="#e5604d"/>
+    <use href="#ico-cross" x="1052" y="588"/>
+    <text x="1066" y="593" font-size="13.5" font-weight="600" fill="#f0b7af">host · network · .git · push</text>
+  </g>
+
+  <!-- ================= ROW 3 — human review gate (rowMid 835, cy 817) ================= -->
+  <rect x="44" y="806" width="58" height="58" rx="16" fill="#d97757"/>
+  <text x="73" y="847" text-anchor="middle" font-size="34" font-weight="800" fill="#fff">3</text>
+  <text x="128" y="796" font-size="29" font-weight="800" fill="#f3f5f8">Human review gate</text>
+  <line x1="128" y1="808" x2="372" y2="808" stroke="#d97757" stroke-width="3"/>
+  <text x="128" y="840" font-size="20.5" font-weight="500" fill="#9aa6b4">
+    <tspan x="128">Nothing lands silently. You review</tspan>
+    <tspan x="128" dy="27">the diff at a human gate —</tspan>
+    <tspan x="128" dy="27">accept or discard is yours to call.</tspan>
+  </text>
+  <g>
+    <line x1="695" y1="817" x2="838" y2="817" stroke="#d97757" stroke-width="2.6"/>
+    <path d="M 845 817 l -9 -5 l 0 10 z" fill="#d97757"/>
+    <text x="770" y="797" text-anchor="middle" font-size="16" fill="#8b97a6">/cordon-review</text>
+    <rect x="585" y="785" width="110" height="64" rx="12" fill="#161b22" stroke="#2b333d"/>
+    <use href="#ico-doc" x="640" y="817"/>
+    <text x="640" y="883" text-anchor="middle" font-size="17" font-weight="600" fill="#c9d1da">worktree diff</text>
+    <rect x="845" y="785" width="110" height="64" rx="12" fill="#161b22" stroke="#2b333d"/>
+    <use href="#ico-review" x="900" y="819"/>
+    <text x="900" y="883" text-anchor="middle" font-size="17" font-weight="600" fill="#c9d1da">you review</text>
+    <text x="900" y="904" text-anchor="middle" font-size="15" fill="#8b97a6">human-only gate</text>
+    <!-- fork -->
+    <line x1="955" y1="809" x2="1030" y2="793" stroke="#6cc070" stroke-width="2.4"/>
+    <path d="M 1036 792 l -10 -2 l 4 9 z" fill="#6cc070"/>
+    <line x1="955" y1="825" x2="1030" y2="841" stroke="#8b97a6" stroke-width="2.4"/>
+    <path d="M 1036 842 l -10 -7 l 0 9 z" fill="#8b97a6"/>
+    <rect x="1036" y="775" width="194" height="34" rx="17" fill="rgba(108,192,112,0.10)" stroke="#6cc070"/>
+    <text x="1133" y="797" text-anchor="middle" font-size="15" font-weight="700" fill="#c8e6c9">/cordon-accept</text>
+    <rect x="1036" y="825" width="194" height="34" rx="17" fill="#161b22" stroke="#5b6675"/>
+    <text x="1133" y="847" text-anchor="middle" font-size="15" font-weight="700" fill="#aeb8c4">/cordon-discard</text>
+  </g>
+
+  <!-- ================= ROW 4 — land on a fresh branch (rowMid 1089, cy 1071) ================= -->
+  <rect x="44" y="1060" width="58" height="58" rx="16" fill="#d97757"/>
+  <text x="73" y="1101" text-anchor="middle" font-size="34" font-weight="800" fill="#fff">4</text>
+  <text x="128" y="1050" font-size="29" font-weight="800" fill="#f3f5f8">Land on a fresh branch</text>
+  <line x1="128" y1="1062" x2="430" y2="1062" stroke="#d97757" stroke-width="3"/>
+  <text x="128" y="1094" font-size="20.5" font-weight="500" fill="#9aa6b4">
+    <tspan x="128">Accepting lands a fresh</tspan>
+    <tspan x="128" dy="27"><tspan fill="#c9d1da" font-weight="600">cordon-accepted/*</tspan> branch you</tspan>
+    <tspan x="128" dy="27">merge — never pushed, never to main.</tspan>
+  </text>
+  <g>
+    <line x1="675" y1="1071" x2="818" y2="1071" stroke="#d97757" stroke-width="2.6"/>
+    <path d="M 825 1071 l -9 -5 l 0 10 z" fill="#d97757"/>
+    <text x="750" y="1051" text-anchor="middle" font-size="15.5" fill="#8b97a6">/cordon-accept</text>
+    <line x1="935" y1="1071" x2="1088" y2="1071" stroke="#d97757" stroke-width="2.6"/>
+    <path d="M 1095 1071 l -9 -5 l 0 10 z" fill="#d97757"/>
+    <text x="1015" y="1051" text-anchor="middle" font-size="16" fill="#8b97a6">you merge</text>
+    <rect x="565" y="1039" width="110" height="64" rx="12" fill="#161b22" stroke="#2b333d"/>
+    <use href="#ico-doc" x="620" y="1071"/>
+    <use href="#ico-check" x="638" y="1054"/>
+    <text x="620" y="1137" text-anchor="middle" font-size="17" font-weight="600" fill="#c9d1da">approved</text>
+    <rect x="825" y="1039" width="110" height="64" rx="12" fill="#161b22" stroke="#2b333d"/>
+    <use href="#ico-branch" x="880" y="1071"/>
+    <text x="880" y="1137" text-anchor="middle" font-size="16" font-weight="600" fill="#c9d1da">cordon-accepted/*</text>
+    <rect x="1095" y="1039" width="110" height="64" rx="12" fill="#161b22" stroke="#2b333d"/>
+    <use href="#ico-repo" x="1150" y="1071"/>
+    <text x="1150" y="1137" text-anchor="middle" font-size="17" font-weight="600" fill="#c9d1da">main</text>
+    <!-- denied note -->
+    <rect x="838" y="1155" width="352" height="32" rx="16" fill="rgba(229,96,77,0.10)" stroke="#e5604d"/>
+    <use href="#ico-cross" x="858" y="1171"/>
+    <text x="874" y="1176" font-size="14.5" font-weight="600" fill="#f0b7af">never auto-pushed · never straight to main</text>
+  </g>
+
+  <!-- ================= ROW 5 — discard without a trace (rowMid 1343, cy 1325) ================= -->
+  <rect x="44" y="1314" width="58" height="58" rx="16" fill="#d97757"/>
+  <text x="73" y="1355" text-anchor="middle" font-size="34" font-weight="800" fill="#fff">5</text>
+  <text x="128" y="1304" font-size="29" font-weight="800" fill="#f3f5f8">Discard without a trace</text>
+  <line x1="128" y1="1316" x2="430" y2="1316" stroke="#d97757" stroke-width="3"/>
+  <text x="128" y="1348" font-size="20.5" font-weight="500" fill="#9aa6b4">
+    <tspan x="128">Discarding deletes the worktree.</tspan>
+    <tspan x="128" dy="27">Your checkout is left untouched —</tspan>
+    <tspan x="128" dy="27">and the audit trail survives.</tspan>
+  </text>
+  <g>
+    <line x1="675" y1="1325" x2="818" y2="1325" stroke="#8b97a6" stroke-width="2.6"/>
+    <path d="M 825 1325 l -9 -5 l 0 10 z" fill="#8b97a6"/>
+    <text x="750" y="1305" text-anchor="middle" font-size="15.5" fill="#8b97a6">/cordon-discard</text>
+    <line x1="935" y1="1325" x2="1088" y2="1325" stroke="#5b6675" stroke-width="2.4" stroke-dasharray="6 6"/>
+    <text x="1015" y="1305" text-anchor="middle" font-size="16" fill="#8b97a6">no trace</text>
+    <rect x="565" y="1293" width="110" height="64" rx="12" fill="#161b22" stroke="#2b333d"/>
+    <use href="#ico-doc" x="620" y="1325"/>
+    <use href="#ico-cross" x="638" y="1308"/>
+    <text x="620" y="1391" text-anchor="middle" font-size="17" font-weight="600" fill="#c9d1da">rejected</text>
+    <rect x="825" y="1293" width="110" height="64" rx="12" fill="#161b22" stroke="#2b333d"/>
+    <use href="#ico-trash" x="880" y="1325"/>
+    <text x="880" y="1391" text-anchor="middle" font-size="17" font-weight="600" fill="#c9d1da">worktree deleted</text>
+    <rect x="1095" y="1293" width="110" height="64" rx="12" fill="#161b22" stroke="#2b333d"/>
+    <use href="#ico-repo" x="1150" y="1325"/>
+    <use href="#ico-check" x="1191" y="1306"/>
+    <text x="1150" y="1391" text-anchor="middle" font-size="16" font-weight="600" fill="#c9d1da">checkout untouched</text>
+    <!-- audit note -->
+    <rect x="838" y="1409" width="300" height="32" rx="16" fill="rgba(217,119,87,0.12)" stroke="#d97757"/>
+    <text x="988" y="1430" text-anchor="middle" font-size="14.5" font-weight="600" fill="#e9b8a6">audit trail survives the discard</text>
+  </g>
+
+  <!-- ===== FOOTER ===== -->
+  <text x="70" y="1528" font-size="22" font-weight="600" fill="#9aa6b4">Built with nothing but Claude Code&#8217;s own primitives.</text>
+  <text x="1210" y="1528" text-anchor="end" font-size="20" font-weight="600" fill="#6b7682">github.com/ggoosen/Cordon · Apache-2.0</text>
+</svg>

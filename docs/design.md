@@ -680,7 +680,9 @@ curl -fsSL https://raw.githubusercontent.com/<you>/cordon/main/install.sh | bash
 ```
 Plugin-level hooks live in `hooks/hooks.json` (same schema as the settings
 `hooks` block). Skills at the plugin root become `/cordon:cordon-review` etc.
-Users install with `/plugin install https://github.com/<you>/cordon`.
+Users install with `/plugin marketplace add <you>/cordon` followed by
+`/plugin install cordon@cordon` (two steps — there is no one-step
+`/plugin install owner/repo` form).
 
 > **Key limitation to document honestly:** a *plugin* can ship skills, hooks, and
 > some settings, but **the project still needs the `sandbox` + `permissions.deny`

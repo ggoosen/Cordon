@@ -1,5 +1,10 @@
 # Cordon
 
+[![tests](https://github.com/ggoosen/Cordon/actions/workflows/test.yml/badge.svg)](https://github.com/ggoosen/Cordon/actions/workflows/test.yml)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-2.1.x%2B-d97757)](https://docs.claude.com/en/docs/claude-code)
+[![Built with Claude Code primitives](https://img.shields.io/badge/primitives-hooks%20%C2%B7%20worktree%20%C2%B7%20sandbox-555)](#how-the-enforcement-layers-stack)
+
 **Every Claude Code session in your repo becomes isolated, sandboxed, and
 diff-gated — using nothing but Claude Code's own primitives.**
 
@@ -13,6 +18,11 @@ work happens in a throwaway git worktree        (never your checkout)
       → landed on a fresh branch you merge      (never pushed, never to main)
         → or discarded without a trace
 ```
+
+<p align="center">
+  <img src="docs/infographic.png" width="840"
+       alt="Cordon's five-step lifecycle: every Claude Code session runs in a throwaway git worktree, inside an OS sandbox and a boundary hook, passes a human review gate (/cordon-review), then lands on a fresh cordon-accepted/* branch you merge — never pushed, never straight to main — or is discarded without a trace while your checkout stays untouched and the audit trail survives.">
+</p>
 
 > ## ⚠️ The honest security line — read this first
 >
@@ -114,7 +124,8 @@ rules or hooks.
 ## Plugin install (skills + hooks only)
 
 ```
-/plugin install ggoosen/Cordon
+/plugin marketplace add ggoosen/Cordon
+/plugin install cordon@cordon
 ```
 
 gives you `/cordon:review`, `/cordon:accept`, `/cordon:discard`,
@@ -198,6 +209,12 @@ audit trail — with two engines:
 
 Start here; when the trust assumption breaks, move there. Two doors, one
 house.
+
+## Author
+
+Built by George Goosen. Questions, ideas, or want to connect? Find me on
+GitHub — [**@ggoosen**](https://github.com/ggoosen). Issues and PRs welcome on
+this repo.
 
 ## License
 
